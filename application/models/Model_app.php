@@ -159,5 +159,27 @@ class Model_app extends CI_Model {
 		$query = $this->db->query("SELECT count(mobil) AS banyak FROM barang_laku WHERE mobil=$a AND status!='Selesai';");
 		return $query->row_array();
 	}
+
+	public function laporan($a)
+	{
+		$waktu = explode('-', $a);
+		if (count($waktu)>2) {
+			$query = $this->db->query("SELECT *,barang.nama AS namaMobil FROM barang_laku AS a JOIN barang WHERE a.mobil=barang.id AND date(waktu_pinjam)=curdate() AND status='Selesai';");
+		} else {
+			$query = $this->db->query("SELECT *,barang.nama AS namaMobil FROM barang_laku AS a JOIN barang WHERE a.mobil=barang.id AND year(waktu_pinjam)='{$waktu[0]}' AND month(waktu_pinjam)='{$waktu[1]}' AND status='Selesai';");
+		}
+		return $query->result_array();
+	}
+
+	public function total($a)
+	{
+		$waktu = explode('-', $a);
+		if (count($waktu)>2) {
+			$query = $this->db->query("SELECT sum(harga*lama_pinjam) AS hargaTotal, now() AS hariIni FROM barang_laku AS a JOIN barang WHERE a.mobil=barang.id AND date(waktu_pinjam)=curdate() AND status='Selesai';");
+		} else {
+			$query = $this->db->query("SELECT sum(harga*lama_pinjam) AS hargaTotal, now() AS hariIni FROM barang_laku AS a JOIN barang WHERE a.mobil=barang.id AND year(waktu_pinjam)='{$waktu[0]}' AND month(waktu_pinjam)='{$waktu[1]}' AND status='Selesai';");
+		}
+		return $query->row_array();
+	}
 	
 }

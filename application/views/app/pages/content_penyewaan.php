@@ -15,7 +15,37 @@
                 Data Penyewaan
                 <div class="pull-right">
                     <div class="btn-group">
-                        <a href="<?= base_url('app/print') ?>" target="_blank" class="btn btn-primary btn-xs"><i class="fa fa-print"></i> Print</a>
+                        <a href="#print" data-toggle="modal" class="btn btn-primary btn-xs"><i class="fa fa-print"></i> Print</a>
+                        <!-- Modal -->
+                        <div class="modal fade" id="print" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title" id="myModalLabel">Tambah Penyewaan</h4>
+                                    </div>
+                                    <form action="<?= base_url('app/print') ?>" method="post" target="_blank">
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <label for="waktu">Waktu</label>
+                                                <select name="waktu" id="waktu" class="form-control" required>
+                                                    <option value="<?= date('Y-m-d') ?>">Hari ini</option>
+                                                    <option value="<?= date('Y-m') ?>">Bulan ini</option>
+                                                    <option value="<?php $bln=date('m')-1;echo date('Y')."-".$bln ?>">Bilan kemarin</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+                                            <button type="submit" class="btn btn-primary">Cetak</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+                        <!-- /.modal -->
                     </div>
                     <div class="btn-group">
                         <a href="#tambah" data-toggle="modal" class="btn btn-primary btn-xs">Tambah</a>

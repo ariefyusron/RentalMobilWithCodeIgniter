@@ -83,7 +83,13 @@ class App extends CI_Controller {
 
 	public function print()
 	{
-		$this->load->view('app/view_print');
+		$data['data'] = $this->model_app->profil($this->session->userdata('username'));
+		$waktu = $this->input->post('waktu');
+
+		$data['print'] = $this->model_app->laporan($waktu);
+		$data['total'] = $this->model_app->total($waktu);
+
+		$this->load->view('app/view_print',$data);
 	}
 
 }
