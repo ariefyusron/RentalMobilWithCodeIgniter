@@ -24,7 +24,7 @@
                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                         <h4 class="modal-title" id="myModalLabel">Tambah Penyewaan</h4>
                                     </div>
-                                    <form action="<?= base_url('app/print') ?>" method="post" target="_blank">
+                                    <form action="<?= base_url('app/cetak') ?>" method="post" target="_blank">
                                         <div class="modal-body">
                                             <div class="form-group">
                                                 <label for="waktu">Waktu</label>

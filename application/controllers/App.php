@@ -81,7 +81,7 @@ class App extends CI_Controller {
         }
 	}
 
-	public function print()
+	public function cetak()
 	{
 		$data['data'] = $this->model_app->profil($this->session->userdata('username'));
 		$waktu = $this->input->post('waktu');
