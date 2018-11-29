@@ -13,6 +13,7 @@ $route['app/addpenyewa'] = 'app/addpenyewa';
 $route['app/editpenyewa'] = 'app/editpenyewa';
 $route['app/hapuspenyewa/(:any)'] = 'app/hapuspenyewa/$1';
 $route['app/gantifoto'] = 'app/gantifoto';
+$route['app/gantipassword'] = 'app/gantipassword';
 $route['app/cetak'] = 'app/cetak';
 $route['app/(:any)'] = 'app/index/$1';
 

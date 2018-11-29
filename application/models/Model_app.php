@@ -203,5 +203,44 @@ class Model_app extends CI_Model {
 			redirect('app/pengaturan');
 		}
 	}
+
+	public function ganti_password($a,$b)
+	{
+		$cek = $this->db->query("SELECT * FROM admin WHERE uname='$a';")->row_array();
+		$cek_passlama = password_verify($b['passlama'],$cek['pass']);
+		if ($cek_passlama) {
+			if ($b['passbaru']==$b['passbarulagi']) {
+				$passbaru = password_hash($b['passbaru'],PASSWORD_DEFAULT);
+				$query = $this->db->simple_query("UPDATE admin SET pass='$passbaru' WHERE uname='$a';");
+				if ($query) {
+					echo '<script>
+						alert("Berhasil Ganti Password. Silahkan Login Kembali.");
+						document.location.href="'.base_url('logout').'";
+					</script>';
+				} else {
+					$this->session->set_flashdata('notif','<div class="alert alert-danger alert-dismissable">
+										<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+										<h4><i class="icon fa fa-ban"></i> Error!.</h4>
+										Silahkan coba lagi.
+									</div>');
+        			redirect('app/pengaturan');
+				}
+			} else {
+				$this->session->set_flashdata('notif','<div class="alert alert-danger alert-dismissable">
+										<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+										<h4><i class="icon fa fa-ban"></i> Password Baru Tidak Sama!.</h4>
+										Silahkan coba lagi.
+									</div>');
+        		redirect('app/pengaturan');
+			}
+		} else {
+			$this->session->set_flashdata('notif','<div class="alert alert-danger alert-dismissable">
+										<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+										<h4><i class="icon fa fa-ban"></i> Password Salah!.</h4>
+										Silahkan coba lagi.
+									</div>');
+        	redirect('app/pengaturan');
+		}
+	}
 	
 }

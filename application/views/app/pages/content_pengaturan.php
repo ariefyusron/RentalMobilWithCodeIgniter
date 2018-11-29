@@ -39,18 +39,18 @@
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
-                <form action="">
+                <?= form_open('app/gantipassword') ?>
                     <div class="form-group">
                         <label for="passlama">Password Lama</label>
-                        <input type="password" name="passlama" placeholder="Masukkan Password Lama" class="form-control" id="passlama">
+                        <input type="password" name="passlama" placeholder="Masukkan Password Lama" class="form-control" id="passlama" required>
                     </div>
                     <div class="form-group">
                         <label for="passbaru">Password Baru</label>
-                        <input type="password" name="passbaru" placeholder="Masukkan Password Baru" class="form-control" id="passbaru">
+                        <input type="password" name="passbaru" placeholder="Masukkan Password Baru" class="form-control" id="passbaru" required>
                     </div>
                     <div class="form-group">
                         <label for="passbarulagi">Password Baru</label>
-                        <input type="password" name="passbarulagi" placeholder="Masukkan Password Baru Lagi" class="form-control" id="passbarulagi">
+                        <input type="password" name="passbarulagi" placeholder="Masukkan Password Baru Lagi" class="form-control" id="passbarulagi" required>
                     </div>
                     <div class="form-group pull-right">
                         <input type="submit" class="btn btn-primary" value="Ganti Password">

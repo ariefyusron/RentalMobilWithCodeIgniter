@@ -100,4 +100,11 @@ class App extends CI_Controller {
 		$this->load->view('app/view_print',$data);
 	}
 
+	public function gantipassword()
+	{
+		$data = $this->input->post(array('passlama','passbaru','passbarulagi'));
+		
+		$this->model_app->ganti_password($this->session->userdata('username'),$data);
+	}
+
 }
