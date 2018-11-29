@@ -70,14 +70,22 @@ class App extends CI_Controller {
 	{
 		$data['upload_path'] = './assets/img/';
         $data['allowed_types'] = 'gif|jpg|png';
+        $data['file_name'] = uniqid();
 
         $this->load->library('upload', $data);
 
         if ( ! $this->upload->do_upload('foto'))
         {
-            $error = array('error' => $this->upload->display_errors());
-
-            echo $this->upload->display_errors();
+            $this->session->set_flashdata('notif','
+						<div class="alert alert-danger alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        	Foto gagal diganti!
+                        </div>
+					');
+			redirect('app/pengaturan');
+        } else {
+        	$ext = $this->upload->data();
+        	$this->model_app->ganti_foto($this->session->userdata('username'),$ext['file_name']);
         }
 	}
 

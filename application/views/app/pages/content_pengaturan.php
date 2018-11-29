@@ -19,7 +19,7 @@
                 <?= form_open_multipart('app/gantifoto') ?>
                     <div class="form-group">
                         <label for="foto">Pilih Foto</label>
-                        <input type="file" id="foto" name="foto" class="form-control">
+                        <input type="file" id="foto" name="foto" class="form-control" required>
                     </div>
                     <div class="form-group pull-right">
                         <input type="submit" class="btn btn-primary" value="Ganti Foto">

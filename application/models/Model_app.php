@@ -181,5 +181,27 @@ class Model_app extends CI_Model {
 		}
 		return $query->row_array();
 	}
+
+	public function ganti_foto($a,$b)
+	{
+		$query = $this->db->simple_query("UPDATE admin SET foto='$b' WHERE uname='$a';");
+		if ($query) {
+			$this->session->set_flashdata('notif','
+						<div class="alert alert-success alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        	Foto berhasil diganti.
+                        </div>
+					');
+			redirect('app/pengaturan');
+		} else {
+			$this->session->set_flashdata('notif','
+						<div class="alert alert-danger alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        	Foto gagal diganti!
+                        </div>
+					');
+			redirect('app/pengaturan');
+		}
+	}
 	
 }
