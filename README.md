@@ -14,3 +14,7 @@ Cara kedua (Rekomended)
 3. Import Database db/rental.sql
 4. Run
 Nb: jika menggunakan setting default harusnya udah bisa running. jika masih tidak bisa setting configurasi db application/config/database.php
+
+Untuk login:
+username = admin
+password = admin
